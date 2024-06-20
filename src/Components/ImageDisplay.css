@@ -1,0 +1,52 @@
+.main-container {
+  border: 3px solid #152632;
+  border-radius: 30px;
+  background-color: #91c7f0;
+  transition: border-color 0.3s ease; /* Add transition for smooth border color change */
+}
+
+.array-container {
+  border: 3px solid #152632;
+  border-radius: 30px;
+  background-color: #427aa3;
+}
+
+.array-container.correct {
+  border-color: green;
+  box-shadow: -1px 2px 20px 3px green;
+  animation: blink-correct-box-shadow 1s infinite; /* Apply blink animation to box shadow */
+}
+
+.array-container.wrong {
+  border-color: red;
+  box-shadow: -1px 2px 20px 3px red;
+  animation: blink-box-shadow 1s infinite; /* Apply blink animation to box shadow */
+}
+
+@keyframes blink-box-shadow {
+  0% {
+    box-shadow: -1px 2px 20px 3px red;
+  }
+  50% {
+    box-shadow: -1px 2px 20px 3px transparent;
+  }
+  100% {
+    box-shadow: -1px 2px 20px 3px red;
+  }
+}
+@keyframes blink-correct-box-shadow {
+  0% {
+    box-shadow: -1px 2px 20px 3px green;
+  }
+  50% {
+    box-shadow: -1px 2px 20px 3px transparent;
+  }
+  100% {
+    box-shadow: -1px 2px 20px 3px green;
+  }
+}
+
+.img-thumbnail {
+  background-color: transparent;
+  border: 0px;
+}
