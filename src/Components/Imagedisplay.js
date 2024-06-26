@@ -31,7 +31,7 @@ const DroppableImage = ({ src, expected, onDrop }) => {
     }),
   }));
 
-  const backgroundColor = isOver ? 'yellow' : 'transparent';
+  const backgroundColor = isOver ? '#f0e883' : 'transparent';
 
   return (
     <div
