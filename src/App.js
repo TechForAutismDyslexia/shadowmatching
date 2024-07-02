@@ -7,7 +7,7 @@ function App() {
   const [tries, setTries] = useState(0);
   const [timer, setTimer] = useState(0);
   return (
-    <Router>
+    <Router basename='/games/shadowmatching'>
       <Routes>
         <Route path="/" element={<QuestionComponent setTries={setTries} setTimer={setTimer} />} />
         <Route path="/result" element={<Result tries={tries} timer={timer} />} />

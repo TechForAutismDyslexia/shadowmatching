@@ -46,48 +46,60 @@ const DroppableImage = ({ src, expected, onDrop }) => {
   );
 };
 
-const QuestionComponent = ({tries,setTries,timer,setTimer}) => {
+const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isCorrect, setIsCorrect] = useState(false);
   const [currentDisplayImage, setCurrentDisplayImage] = useState('');
   const [currentImages, setCurrentImages] = useState([]);
   const [dropResult, setDropResult] = useState(null); // Add state to track drop result
-  const [nextbutton, setNextButton] = useState(false); 
+  const [nextButton, setNextButton] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
-    const currentData = questions[currentQuestion];
-    setCurrentDisplayImage(currentData.display);
-    setCurrentImages(currentData.images);
-    setIsCorrect(false); // Reset correctness state when question changes
-    setDropResult(null); // Reset drop result state when question changes
+    const loadImages = async () => {
+      const currentData = questions[currentQuestion];
+      const displayImage = await import(`${currentData.display}`);
+      const images = await Promise.all(
+        currentData.images.map(async (image) => ({
+          ...image,
+          src: (await import(`${image.src}`)).default,
+        }))
+      );
+      setCurrentDisplayImage(displayImage.default);
+      setCurrentImages(images);
+      setIsCorrect(false); // Reset correctness state when question changes
+      setDropResult(null); // Reset drop result state when question changes
+    };
+
+    loadImages();
   }, [currentQuestion]);
+
   useEffect(() => {
     let startTime = new Date().getTime();
     let timerInterval = setInterval(() => {
       const currentTime = new Date().getTime();
       const elapsedTimer = currentTime - startTime;
-      setTimer(elapsedTimer); 
+      setTimer(elapsedTimer);
     }, 1000);
     return () => clearInterval(timerInterval);
   }, []);
 
   const handleDrop = (draggedSrc, droppedOnSrc, expected) => {
     if (expected) {
-      setTries(prevTries => prevTries + 1); 
+      setTries((prevTries) => prevTries + 1);
       setIsCorrect(true);
       setNextButton(true);
-      setDropResult('correct'); 
+      setDropResult('correct');
       setTimeout(() => {
         setIsCorrect(false);
-        setDropResult(null); 
+        setDropResult(null);
       }, 5000);
     } else {
-      setTries(prevTries => prevTries + 1); 
+      setTries((prevTries) => prevTries + 1);
       setDropResult('wrong');
-      setTimeout(()=>{
+      setTimeout(() => {
         setDropResult(null);
-      },3000); // Update drop result
+      }, 3000); // Update drop result
     }
   };
 
@@ -100,7 +112,7 @@ const QuestionComponent = ({tries,setTries,timer,setTimer}) => {
       setCurrentQuestion(nextQuestion);
     } else {
       setNextButton(true);
-      navigate('/result'); 
+      navigate('/result');
     }
   };
 
@@ -127,10 +139,10 @@ const QuestionComponent = ({tries,setTries,timer,setTimer}) => {
           </div>
         </div>
         <div className="col-12 text-center mt-4">
-          {nextbutton && (questions[currentQuestion + 1] ? ( // Only show the "Next" button if drop is correct and there are more questions
+          {nextButton && (questions[currentQuestion + 1] ? ( // Only show the "Next" button if drop is correct and there are more questions
             <button onClick={handleNextQuestion} className="btn btn-warning btn-lg">
               Next
-            </button>):(
+            </button>) : (
               <button onClick={() => navigate('/result')} className="btn btn-warning btn-lg">
                 View Result
               </button>

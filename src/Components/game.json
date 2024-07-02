@@ -1,122 +1,122 @@
 {
     "1": {
-      "display": "../images/giraffe.png",
+      "display": "./assets/images/giraffe.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": true }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": true }
       ]
     },
     "2": {
-      "display": "../images/bell.png",
+      "display": "./assets/images/bell.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "3": {
-      "display": "../images/boat.png",
+      "display": "./assets/images/boat.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "4": {
-      "display": "../images/bottle.png",
+      "display": "./assets/images/bottle.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "5": {
-      "display": "../images/bulb.png",
+      "display": "./assets/images/bulb.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": true },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": true },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "6": {
-      "display": "../images/fruit.png",
+      "display": "./assets/images/fruit.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": true },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": true },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "7": {
-      "display": "../images/axe.png",
+      "display": "./assets/images/axe.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": true }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": true }
       ]
     },
     "8": {
-      "display": "../images/guitar.png",
+      "display": "./assets/images/guitar.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": true },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": true },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "9": {
-      "display": "../images/icecream.png",
+      "display": "./assets/images/icecream.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "10": {
-      "display": "../images/rollerskate.png",
+      "display": "./assets/images/rollerskate.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": true }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": true }
       ]
     },
     "11": {
-      "display": "../images/shoe.png",
+      "display": "./assets/images/shoe.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": true }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": true }
       ]
     },
     "12": {
-      "display": "../images/shooter.png",
+      "display": "./assets/images/shooter.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": true }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": true }
       ]
     },
     "13": {
-      "display": "../images/snowman.png",
+      "display": "./assets/images/snowman.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": true },
-        { "src": "../images/shadow2.png", "expected": false },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": true },
+        { "src": "./assets/images/shadow2.png", "expected": false },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "14": {
-      "display": "../images/tower.png",
+      "display": "./assets/images/tower.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     },
     "15": {
-      "display": "../images/jar.png",
+      "display": "./assets/images/jar.png",
       "images": [
-        { "src": "../images/shadow1.png", "expected": false },
-        { "src": "../images/shadow2.png", "expected": true },
-        { "src": "../images/shadow3.png", "expected": false }
+        { "src": "./assets/images/shadow1.png", "expected": false },
+        { "src": "./assets/images/shadow2.png", "expected": true },
+        { "src": "./assets/images/shadow3.png", "expected": false }
       ]
     }
   }
