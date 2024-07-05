@@ -5,7 +5,7 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { isMobile } from 'react-device-detect';
 import Confetti from 'react-confetti';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import questions from './game.json'; // Import questions data
+import questions from '../assets/game.json'; // Import questions data
 import './ImageDisplay.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
@@ -58,11 +58,11 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   useEffect(() => {
     const loadImages = async () => {
       const currentData = questions[currentQuestion];
-      const displayImage = await import(`${currentData.display}`);
+      const displayImage = await import(`../assets/images/${currentData.display}.png`);
       const images = await Promise.all(
         currentData.images.map(async (image) => ({
           ...image,
-          src: (await import(`${image.src}`)).default,
+          src: (await import(`../assets/images/${image.src}.png`)).default,
         }))
       );
       setCurrentDisplayImage(displayImage.default);

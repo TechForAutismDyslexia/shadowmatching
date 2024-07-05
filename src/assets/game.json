@@ -1,0 +1,122 @@
+{
+    "1": {
+      "display": "giraffe",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": true }
+      ]
+    },
+    "2": {
+      "display": "bell",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "3": {
+      "display": "boat",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "4": {
+      "display": "bottle",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "5": {
+      "display": "bulb",
+      "images": [
+        { "src": "shadow1", "expected": true },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "6": {
+      "display": "fruit",
+      "images": [
+        { "src": "shadow1", "expected": true },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "7": {
+      "display": "axe",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": true }
+      ]
+    },
+    "8": {
+      "display": "guitar",
+      "images": [
+        { "src": "shadow1", "expected": true },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "9": {
+      "display": "icecream",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "10": {
+      "display": "rollerskate",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": true }
+      ]
+    },
+    "11": {
+      "display": "shoe",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": true }
+      ]
+    },
+    "12": {
+      "display": "shooter",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": true }
+      ]
+    },
+    "13": {
+      "display": "snowman",
+      "images": [
+        { "src": "shadow1", "expected": true },
+        { "src": "shadow2", "expected": false },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "14": {
+      "display": "tower",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    },
+    "15": {
+      "display": "jar",
+      "images": [
+        { "src": "shadow1", "expected": false },
+        { "src": "shadow2", "expected": true },
+        { "src": "shadow3", "expected": false }
+      ]
+    }
+  }
