@@ -22,6 +22,10 @@
   box-shadow: -1px 2px 20px 3px red;
   animation: blink-box-shadow 1s infinite; /* Apply blink animation to box shadow */
 }
+/* .menucontainer {
+  border: 1px solid #152632;
+  border-radi
+} */
 
 @keyframes blink-box-shadow {
   0% {

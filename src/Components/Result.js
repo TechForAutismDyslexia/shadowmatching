@@ -9,12 +9,21 @@ export default function Result({ tries, timer }) {
         if (tries === 0|| timer === 0) {
           return;
         }
-        const response = await axios.post('https://jwlgamesbackend.vercel.app/api/caretaker/sendgamedata', {
-          gameId: 4,
+        const gameId = localStorage.getItem('gameId');
+        const childId = localStorage.getItem('childId');
+        const token = localStorage.getItem('logintoken');
+        const fixtimer = timer / 1000;
+        const response = await axios.put(`https://jwlgamesbackend.vercel.app/api/caretaker/${gameId}/${childId}`, {
           tries: tries,
-          timer: timer,
+          timer: fixtimer,
           status: true,
-        });
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+          }
+        }
+      );
         console.log(response);
       } catch (err) {
         console.log(err);

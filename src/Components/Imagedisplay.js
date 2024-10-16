@@ -5,9 +5,9 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { isMobile } from 'react-device-detect';
 import Confetti from 'react-confetti';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import questions from '../assets/game.json'; // Import questions data
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './ImageDisplay.css';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const ItemTypes = {
   IMAGE: 'image',
@@ -47,32 +47,48 @@ const DroppableImage = ({ src, expected, onDrop }) => {
 };
 
 const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentItem, setCurrentItem] = useState(null);
   const [currentDisplayImage, setCurrentDisplayImage] = useState('');
   const [currentImages, setCurrentImages] = useState([]);
-  const [dropResult, setDropResult] = useState(null); // Add state to track drop result
+  const [dropResult, setDropResult] = useState(null);
   const [nextButton, setNextButton] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
+  const gameId = localStorage.getItem('selectedGameId');
 
   useEffect(() => {
-    const loadImages = async () => {
-      const currentData = questions[currentQuestion];
-      const displayImage = await import(`../assets/images/${currentData.display}.png`);
-      const images = await Promise.all(
-        currentData.images.map(async (image) => ({
-          ...image,
-          src: (await import(`../assets/images/${image.src}.png`)).default,
-        }))
-      );
-      setCurrentDisplayImage(displayImage.default);
-      setCurrentImages(images);
-      setIsCorrect(false); // Reset correctness state when question changes
-      setDropResult(null); // Reset drop result state when question changes
+    const loadData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+        const data = response.data;
+        const item = data.items[currentPage];
+
+        if (item) {
+          // Assuming display image is directly used as `src`
+          const displayImage = item.display; // Directly use the src for the display image
+
+          // Import images for the array
+          const images = await Promise.all(
+            item.images.map(async (image) => ({
+              ...image,
+              src: (await import(`../assets/images/${image.src}.png`)).default,
+            }))
+          );
+
+          setCurrentItem(item);
+          setCurrentDisplayImage(displayImage); // Set the direct src for display image
+          setCurrentImages(images);
+          setDropResult(null); // Reset drop result state when question changes
+        } else {
+          navigate('/result'); // Navigate to result if no more items
+        }
+      } catch (error) {
+        console.error('Error fetching game data:', error);
+      }
     };
 
-    loadImages();
-  }, [currentQuestion]);
+    loadData();
+  }, [currentPage, gameId, navigate]);
 
   useEffect(() => {
     let startTime = new Date().getTime();
@@ -82,38 +98,32 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
       setTimer(elapsedTimer);
     }, 1000);
     return () => clearInterval(timerInterval);
-  }, []);
+  }, [setTimer]);
 
   const handleDrop = (draggedSrc, droppedOnSrc, expected) => {
     if (expected) {
+      console.log('Correct drop', draggedSrc, droppedOnSrc);
       setTries((prevTries) => prevTries + 1);
-      setIsCorrect(true);
-      setNextButton(true);
       setDropResult('correct');
+      setNextButton(true);
       setTimeout(() => {
-        setIsCorrect(false);
         setDropResult(null);
       }, 5000);
     } else {
+      console.log('Wrong drop', draggedSrc, droppedOnSrc);
       setTries((prevTries) => prevTries + 1);
       setDropResult('wrong');
       setTimeout(() => {
         setDropResult(null);
-      }, 3000); // Update drop result
+      }, 3000);
     }
   };
 
-  const handleNextQuestion = () => {
-    const nextQuestion = currentQuestion + 1;
+  const handleNextPage = () => {
     setCurrentDisplayImage('');
     setCurrentImages([]);
+    setCurrentPage((prevPage) => prevPage + 1);
     setNextButton(false);
-    if (questions[nextQuestion]) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setNextButton(true);
-      navigate('/result');
-    }
   };
 
   const arrayContainerClass = dropResult === 'correct' ? 'array-container correct' : dropResult === 'wrong' ? 'array-container wrong' : 'array-container';
@@ -121,11 +131,16 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div className="container mt-5">
+        <div className="menucontainer d-flex flex-row justify-content-between align-items-center p-2 my-5 rounded shadow-lg">
+          <button onClick={() => navigate('/')} className="btn btn-outline-primary">Home</button>
+          <h1 className="fw-bold text-primary mb-3 mx-auto">Shadow Matching</h1>
+          <button className="btn btn-outline-primary">Instructions</button>
+        </div>
         <div className="main-container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 text-center mb-4">
               <div className="image-display-container mt-4">
-                <DraggableImage src={currentDisplayImage} />
+                {currentDisplayImage && <DraggableImage src={currentDisplayImage} />}
               </div>
             </div>
             <div className="col-12 col-md-8 p-5">
@@ -134,19 +149,15 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
                   <DroppableImage key={index} src={image.src} expected={image.expected} onDrop={handleDrop} />
                 ))}
               </div>
-              {isCorrect && <Confetti />}
+              {dropResult === 'correct' && <Confetti />}
             </div>
           </div>
         </div>
         <div className="col-12 text-center mt-4">
-          {nextButton && (questions[currentQuestion + 1] ? ( // Only show the "Next" button if drop is correct and there are more questions
-            <button onClick={handleNextQuestion} className="btn btn-warning btn-lg">
+          {nextButton && (
+            <button onClick={handleNextPage} className="btn btn-warning btn-lg">
               Next
-            </button>) : (
-              <button onClick={() => navigate('/result')} className="btn btn-warning btn-lg">
-                View Result
-              </button>
-            )
+            </button>
           )}
         </div>
       </div>
