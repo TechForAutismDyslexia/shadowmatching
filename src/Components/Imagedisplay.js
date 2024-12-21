@@ -59,7 +59,7 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+        const response = await axios.get(`https://api.joywithlearning.com/api/shadowmatching/games/${gameId}`);
         const data = response.data;
         const item = data.items[currentPage];
 
