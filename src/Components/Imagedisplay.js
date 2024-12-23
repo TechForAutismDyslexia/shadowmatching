@@ -54,7 +54,7 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   const [dropResult, setDropResult] = useState(null);
   const [nextButton, setNextButton] = useState(false);
   const navigate = useNavigate();
-  const gameId = localStorage.getItem('selectedGameId');
+  const gameId = '6718c148fec75b0f95aa276c';
 
   useEffect(() => {
     const loadData = async () => {
