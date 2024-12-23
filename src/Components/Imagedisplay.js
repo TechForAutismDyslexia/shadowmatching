@@ -54,12 +54,11 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
   const [dropResult, setDropResult] = useState(null);
   const [nextButton, setNextButton] = useState(false);
   const navigate = useNavigate();
-  const gameId = '6718c148fec75b0f95aa276c';
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(`https://api.joywithlearning.com/api/shadowmatching/games/${gameId}`);
+        const response = await axios.get(`https://api.joywithlearning.com/api/shadowmatching/games/6718c148fec75b0f95aa276c`);
         const data = response.data;
         const item = data.items[currentPage];
 
@@ -88,7 +87,7 @@ const QuestionComponent = ({ tries, setTries, timer, setTimer }) => {
     };
 
     loadData();
-  }, [currentPage, gameId, navigate]);
+  }, [currentPage, navigate]);
 
   useEffect(() => {
     let startTime = new Date().getTime();
